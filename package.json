@@ -1,5 +1,5 @@
 {
-  "name": "vjs",
+  "name": "anna-v-chat",
   "version": "0.1.0",
   "main": "app.js",
   "scripts": {
@@ -13,11 +13,15 @@
     "build": "npm run clean && gulp --gulpfile web/gulpfile.js build",
     "lint": "eslint ./**/*.{js,jsx} --ignore-path .gitignore",
     "gulp": "gulp --gulpfile web/gulpfile.js",
-    "gulp:watch": "gulp --gulpfile web/gulpfile.js watch"
+    "gulp:watch": "gulp --gulpfile web/gulpfile.js watch",
+    "postinstall": "npm run build"
   },
   "pre-commit": [
     "lint"
   ],
+  "engines": {
+    "node": "4.0.0"
+  },
   "homepage": "http://vjs.cloudapp.net/",
   "dependencies": {
     "async": "^1.4.2",
