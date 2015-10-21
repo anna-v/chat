@@ -2,8 +2,8 @@
 	"port": 80,
 	"defaultChannel": "1bd3b5a8a7a560e168b3890a",
 	"app":{
-		"serverUrl":"https://anna-v-chat.herokuapp.com",
-		"socketOrigin":"https://anna-v-chat.herokuapp.com:*"
+		"serverUrl":"http://anna-v-chat.herokuapp.com",
+		"socketOrigin":"http://anna-v-chat.herokuapp.com:*"
 	},
 	"mongoose": {
 		"uri": "mongodb://heroku_0xhc3vzk:t5d9ht609cju11keoos3u8o5of@ds041154.mongolab.com:41154/heroku_0xhc3vzk",
