@@ -55,8 +55,11 @@ class Login extends Component {
 						<label>Password</label>
 						<input ref="password" type="password" name="password" />
 					</p>
-					<p className="login-form__field">
-						<a href="/login-fb">Facebook</a>
+					<p className="login-form__field login-form__field--social">
+						<a href="/login-fb"><span className="login-form__icon fa fa-facebook-official"></span>Facebook</a>
+					</p>
+					<p className="login-form__field login-form__field--social">
+						<a href="/login-vk"> <span className="login-form__icon fa fa-vk"></span>Vkontakte</a>
 					</p>
 
 					<button className="login-form__submit" type="submit">Login</button>
