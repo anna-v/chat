@@ -87,11 +87,11 @@ passport.use('vk', new AuthVKStrategy(
 			'email'
 		]
 	},
-	function(accessToken, refreshToken, profile, done) {
+	function(accessToken, refreshToken, params, profile, done) {
 		var userData = {
-			username: profile.username,
+			username: profile.displayName,
 			password: profile.username + profile.profileUrl,
-			email: '',
+			email: params.email,
 			avatar: profile._json.photo,
 			authType: {name: 'vk', idType: profile._json.id}
 

@@ -36,10 +36,7 @@ module.exports = function(app) {
 			)
 	);
 
-	app.get('/login-vk',
-		passport.authenticate('vk', {
-			scope: ['email', 'friends']
-		}),
+	app.get('/login-vk', passport.authenticate('vk', {scope: 'email'}),
 		function() {
 			// The request will be redirected to vk.com
 			// for authentication, so
