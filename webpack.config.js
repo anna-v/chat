@@ -43,6 +43,10 @@ var config = {
 			{test: /\.css$/, loader: 'style-loader!css-loader'},
 			{
 				test: /\.(svg|png|jpg)$/,
+				loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
+			},
+			{
+				test: /avatar-[0-9]\.png$/,
 				loader: 'file?name=../img/[name].[ext]'
 			},
 			{
