@@ -10,8 +10,10 @@ var config = {
 
 	devtool: 'eval',
 
+	entry: './web/src/index.js',
+
 	output: {
-		path: path.join(__dirname, 'build/js'),
+		path: path.join(__dirname, 'web/build/js'),
 		filename: 'app.js',
 		publicPath: '/'
 	},
@@ -31,16 +33,21 @@ var config = {
 			{
 				test: JS_REGEX,
 				exclude: /node_modules/,
-				include: path.join(__dirname, 'src'),
+				include: path.join(__dirname, 'web/src'),
 				loader: 'babel'
 			},
 			{
 				test: /\.sass$/,
 				loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader!sass-loader?indentedSyntax')
 			},
+			{test: /\.css$/, loader: 'style-loader!css-loader'},
 			{
-				test: /\.(eot|woff|ttf|svg|png|jpg)$/,
-				loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
+				test: /\.(svg|png|jpg)$/,
+				loader: 'file?name=../img/[name].[ext]'
+			},
+			{
+				test: /\.(eot|woff|woff2|ttf)$/,
+				loader: 'file?name=../fonts/[name].[ext]'
 			}
 		],
 

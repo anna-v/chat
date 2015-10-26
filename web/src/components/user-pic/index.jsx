@@ -1,5 +1,13 @@
 import React, {Component, PropTypes} from 'react';
 import './index.sass';
+require('../../img/avatar-1.png');
+require('../../img/avatar-2.png');
+require('../../img/avatar-3.png');
+require('../../img/avatar-4.png');
+require('../../img/avatar-5.png');
+require('../../img/avatar-6.png');
+require('../../img/avatar-7.png');
+require('../../img/avatar-8.png');
 
 class UserPic extends Component {
 	static propTypes = {
