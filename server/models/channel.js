@@ -21,7 +21,7 @@ schema.statics.findOrCreate = function(type, userCreateId, userAddId) {
 	var Channel = this;
 	var newChannelObj;
 	var newChannel = {};
-	// если пользоваетель хочет добавить сама себя
+	// если пользоваетель хочет добавить самого себя
 	if (userCreateId !== userAddId) {
 		return Channel.findOne({$and: [{users: {$in: [userCreateId]}}, {users: {$in: [userAddId]}}, {type: type}]}).
 			then(function(channel) {

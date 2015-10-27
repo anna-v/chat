@@ -5,12 +5,13 @@ import './index.sass';
 class ChannelList extends Component {
 	static propTypes = {
 		changeChannel: PropTypes.func.isRequired,
+		deleteChannel: PropTypes.func.isRequired,
 		channels: PropTypes.object.isRequired,
 		currentChannelId: PropTypes.string
 	}
 
 	render() {
-		const {changeChannel, channels} = this.props;
+		const {changeChannel, deleteChannel, channels} = this.props;
 		return (
 			<div className="channels__wrap">
 				<ul className="channels__add">
@@ -24,7 +25,8 @@ class ChannelList extends Component {
 								current={this.props.currentChannelId}
 								lastMessage={channels[key].lastMessage}
 								unread={parseInt(channels[key].message_count, 10)}
-								changeChannel={changeChannel} />
+								changeChannel={changeChannel}
+								deleteChannel={deleteChannel}/>
 						);
 					})}
 				</ul>

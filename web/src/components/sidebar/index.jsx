@@ -7,6 +7,7 @@ import ChannelFilter from '../channel-filter';
 import ChannelAdd from '../channel-add';
 import ChannelList from '../channel-list';
 import {sendAddContact} from '../../actions/channels';
+import {deleteChannel} from '../../actions/channels';
 import {changeChannel} from '../../actions/channels';
 import {setError, removeError} from '../../actions/ui';
 import {toggleEditable} from '../../actions/user';
@@ -75,7 +76,7 @@ class Sidebar extends Component {
 				<ChannelList
 					channels={this.state.filterText ? this.state.filteredChannels : channels.contacts}
 					currentChannelId={channels.current}
-					{...bindActionCreators({changeChannel}, dispatch)} />
+					{...bindActionCreators({changeChannel, deleteChannel}, dispatch)} />
 			</aside>
 		);
 	}

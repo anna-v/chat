@@ -6,6 +6,7 @@ class Channel extends Component {
 	static propTypes = {
 		channel: PropTypes.object.isRequired,
 		changeChannel: PropTypes.func.isRequired,
+		deleteChannel: PropTypes.func.isRequired,
 		active: PropTypes.bool,
 		unread: PropTypes.number,
 		lastMessage: PropTypes.string,
@@ -20,6 +21,12 @@ class Channel extends Component {
 		if (this.props.channel._id !== this.props.current) {
 			this.props.changeChannel(this.props.channel._id);
 		}
+	}
+
+	deleteChannel(event) {
+		event.preventDefault();
+		event.stopPropagation();
+		this.props.deleteChannel(this.props.channel._id);
 	}
 
 	render() {
@@ -49,8 +56,8 @@ class Channel extends Component {
 						})()
 						}
 					</div>
-					{unread && unread > 0 ?
-						<span className="channel__message-unread">{unread}</span> : ''}
+					<span className="channel__delete" href="#" onClick={this.deleteChannel.bind(this)}>Delete</span>
+					{unread && unread > 0 ? <span className="channel__message-unread">{unread}</span> : ''}
 				</a>
 			</li>
 		);

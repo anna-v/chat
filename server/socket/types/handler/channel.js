@@ -53,7 +53,7 @@ var Channels = inherit({
 				var userData = this._data;
 				var socket = this._socket;
 				var Users = this._users;
-				var ifUserOnline = this._ifUserOnline;
+				var ifUserOnline = this._ifUserOnline.bind(this);
 				Channel.findOne({_id: channel.id}).remove(function(err, mess) {
 					var sendObject = {id: channel.id, is_delete: mess.result.n === 1};
 					var toUser;
@@ -156,12 +156,12 @@ var Channels = inherit({
 						if (!Object.keys(args).length) {
 							args[0] = {};
 						}
-						// Проверяем все ли впорядке с входящими данными
+						// Проверяем, все ли в порядке с входящими данными
 						notError = self._dataIsCorrect(event, args[0]);
 						if (notError === true) {
 							callback.apply(self, args);
 						} else {
-							// новое событие об ошибке входящих данных
+							// новое событие ошибки входящих данных
 							self._socket.emit('s.server.error', {event: event, error: notError});
 						}
 					});
@@ -170,7 +170,7 @@ var Channels = inherit({
 		}
 	},
 	/*
-	 * Функция обноваляет сессию
+	 * Функция обновляет сессию
 	 */
 	_updateChannel: function(sessionId, value) {
 		// Через попу, но пока работает )
@@ -187,7 +187,7 @@ var Channels = inherit({
 		return this._users.hasOwnProperty(id);
 	},
 	/*
-	 * Функция для проверки фходящих данных
+	 * Функция для проверки входящих данных
 	 * является вильтом
 	 * @return {Bool}
 	 */

@@ -68,7 +68,6 @@ export function fetchChannelList() {
 
 export function changeChannel(id) {
 	return () => {
-		console.log(id);
 		transport.socket.emit('c.channel.join', {id});
 	};
 }
@@ -82,7 +81,7 @@ export function setContactList(contacts) {
 
 export function removeFromChannelList(data) {
 	return {
-		type: channelActionType.CHANNEL_REMOVE,
+		type: channelActionType.DELETE_CHANNEL,
 		id: data.id,
 		is_delete: data.is_delete
 	};
@@ -98,6 +97,8 @@ export function addContact(contact) {
 export function deleteChannel(id, num) {
 	return () => {
 		transport.socket.emit('c.channel.delete', {id, num});
+		console.log('channel ' + id + ' is deleted');
+		console.log('num is ' + num);
 	};
 }
 
