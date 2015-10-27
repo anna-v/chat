@@ -1,6 +1,23 @@
-extends ./layouts/default
-block head
-	- pageTitle = 'Vanilla chat'
-block content
+doctype html
+html(lang='en')
+
+head
+	meta(charset='utf-8')
+	meta(name='viewport' content='width=device-width, minimal-ui')
+	meta(http-equiv='X-UA-Compatible' content='IE=edge')
+	meta(name='imagetoolbar' content='no')
+	meta(name='msthemecompatible' content='no')
+	meta(name='cleartype' content='on')
+	meta(name='HandheldFriendly' content='True')
+
+	meta(name='format-detection' content='telephone=no')
+	meta(name='format-detection' content='address=no')
+
+	title= 'Vanilla chat'
+
+	link(href='https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic' rel='stylesheet')
+	link(href='./css/default.css' rel='stylesheet')
+
+body
 	#app
 	script(src="js/app.js")
