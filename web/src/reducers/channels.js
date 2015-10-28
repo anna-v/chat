@@ -35,10 +35,10 @@ export function channels(state = defaultChannelsData, action) {
 		}
 		return state;
 
-	case channelActionType.DELETE_CHANNEL:
+	case channelActionType.CHANNEL_REMOVE:
 		if (action.is_delete) {
 			delete state.contacts[action.id];
-			return assign({}, state, {contacts: state.contacts});
+			return assign({}, state, {contacts: state.contacts}, {current: (action.id === state.current ? action.channel : state.current)});
 		}
 		return state;
 

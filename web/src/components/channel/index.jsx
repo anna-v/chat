@@ -26,12 +26,15 @@ class Channel extends Component {
 	deleteChannel(event) {
 		event.preventDefault();
 		event.stopPropagation();
-		this.props.deleteChannel(this.props.channel._id);
+		if (this.props.channel._id !== '1bd3b5a8a7a560e168b3890a') {
+			this.props.deleteChannel(this.props.channel._id);
+		}
 	}
 
 	render() {
 		const {channel: {avatar, color, name, is_online: isOnline}, unread, active, lastMessage} = this.props;
 		const activeModificator = active ? '--active' : '';
+		const defaultChannelId = '1bd3b5a8a7a560e168b3890a';
 
 		return (
 			<li className={'channel-wrap' + activeModificator} onClick={this.changeChannel.bind(this)}>
@@ -56,7 +59,7 @@ class Channel extends Component {
 						})()
 						}
 					</div>
-					<span className="channel__delete" href="#" onClick={this.deleteChannel.bind(this)}>Delete</span>
+					{this.props.channel._id === defaultChannelId ? '' : <span className="channel__delete" href="#" onClick={this.deleteChannel.bind(this)}>Delete</span>}
 					{unread && unread > 0 ? <span className="channel__message-unread">{unread}</span> : ''}
 				</a>
 			</li>

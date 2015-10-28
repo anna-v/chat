@@ -80,10 +80,12 @@ export function setContactList(contacts) {
 }
 
 export function removeFromChannelList(data) {
+	if (data.custom !== undefined) data = data.custom;
 	return {
-		type: channelActionType.DELETE_CHANNEL,
+		type: channelActionType.CHANNEL_REMOVE,
 		id: data.id,
-		is_delete: data.is_delete
+		is_delete: data.is_delete,
+		channel: data.channel
 	};
 }
 
@@ -97,8 +99,6 @@ export function addContact(contact) {
 export function deleteChannel(id, num) {
 	return () => {
 		transport.socket.emit('c.channel.delete', {id, num});
-		console.log('channel ' + id + ' is deleted');
-		console.log('num is ' + num);
 	};
 }
 

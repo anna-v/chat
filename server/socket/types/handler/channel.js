@@ -26,7 +26,7 @@ var Channels = inherit({
 	 */
 	_handlers: [
 		{
-			// обработчик послыает всем канал , что он оффлайн
+			// обработчик послыает всем каналам, что юзер оффлайн
 			name: channelTypes.DISCONNECT,
 			callback: function() {
 				var index;
@@ -46,6 +46,7 @@ var Channels = inherit({
 				}
 			}
 		},
+
 		{
 			// обработчик удалет канал
 			name: channelTypes.DELETE_CHANNEL,
@@ -54,34 +55,32 @@ var Channels = inherit({
 				var socket = this._socket;
 				var Users = this._users;
 				var ifUserOnline = this._ifUserOnline.bind(this);
-				Channel.findOne({_id: channel.id}).remove(function(err, mess) {
-					var sendObject = {id: channel.id, is_delete: mess.result.n === 1};
-					var toUser;
-					// Удаление сообщений по каналу
-					Message.find({ channelId: { $in: [channel.id] } }).remove();
-					if (ifUserOnline(userData.contacts[channel.id].user)) {
-						toUser = userData.contacts[channel.id];
-						sendStatus(socket.handshake.user._id, Users, 's.channel.delete', toUser);
-					}
+				Channel.findOne({_id: channel.id}).remove()
+					.then(mess => {
+						var defaultChannel = config.get('defaultChannel');
+						var toUser = userData.contacts[channel.id];
+						var sendObject = {id: channel.id, is_delete: mess.result.n === 1, channel: defaultChannel};
 
-					/*
-					 * нужно добавить логику при удалении чтобы он менял канал на дефолтный
-					 */
+						// Удаление сообщений по каналу
+						Message.find({ channelId: { $in: [channel.id] } }).remove();
+						if (ifUserOnline(userData.contacts[channel.id].user)) {
+							sendStatus(socket.handshake.user._id, Users, 's.channel.delete', toUser, sendObject);
+						}
+						// Удаление данного контакта из глобального объекта пользователя
+						delete Users[socket.handshake.user._id].contacts[channel.id];
 
-					// И удаляем из глобального объекта пользователя данный контакт
-					delete Users[socket.handshake.user._id].contacts[channel.id];
-
-					socket.emit('s.channel.delete', sendObject);
-				});
+						socket.emit('s.channel.delete', sendObject);
+					});
 			}
 		},
+
 		{
 			// обработчик при присоединениии к каналу
 			name: channelTypes.JOIN_CHANNEL,
 			callback: function(channelTo) {
 				var mess = {};
 				if (this._data.channel === config.get('defaultChannel')) {
-					mess = getSystemMessage(this._socket.handshake.user.username + ' Left channel', config.get('defaultChannel'));
+					mess = getSystemMessage(this._socket.handshake.user.username + ' left channel', config.get('defaultChannel'));
 					sendToAll(this._users, 's.user.send_message', mess, this._socket.handshake.user._id, config.get('defaultChannel'));
 				}
 				this._socket.leave(this._data.channel);
@@ -91,7 +90,7 @@ var Channels = inherit({
 				// добавил переключение по комнатам в одной сессии у всех пользователей
 				joinAllSocket(this._users[this._socket.handshake.user._id], 's.channel.join', {channel: channelTo.id});
 				if (channelTo.id === config.get('defaultChannel')) {
-					mess = getSystemMessage(this._socket.handshake.user.username + ' Join channel (STOP TROLLING)', config.get('defaultChannel'));
+					mess = getSystemMessage(this._socket.handshake.user.username + ' joined channel', config.get('defaultChannel'));
 					sendToAll(this._users, 's.user.send_message', mess, this._socket.handshake.user._id, config.get('defaultChannel'));
 				}
 				this._socket.emit('s.channel.join', {channel: channelTo.id});
@@ -109,7 +108,11 @@ var Channels = inherit({
 				var ifUserOnline = this._ifUserOnline.bind(this);
 				User.findByParams(user.username, user.username).
 					then(function(user) {
+						// Error if user tries to add himself
 						if (user) {
+							if ((socket.handshake.user._id).toString() === (user._id).toString()) {
+								throw new Error('You can\'t add yourself');
+							}
 							toUser = user;
 						} else {
 							throw new Error('User not found');
