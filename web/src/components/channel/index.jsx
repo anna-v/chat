@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import UserPic from '../user-pic';
 import './index.sass';
+require('../../sound/message.mp3');
 
 class Channel extends Component {
 	static propTypes = {
@@ -14,6 +15,15 @@ class Channel extends Component {
 	}
 	constructor(props) {
 		super(props);
+	}
+
+	componentDidUpdate(prevProps) {
+		const oldCount = prevProps.unread;
+		const messageSound = new Audio('../../sound/message.mp3');
+		messageSound.load();
+		if ((!this.props.active && (this.props.unread > oldCount))) {
+			messageSound.play();
+		}
 	}
 
 	changeChannel(event) {

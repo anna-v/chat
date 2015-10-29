@@ -52,6 +52,10 @@ var config = {
 			{
 				test: /\.(eot|woff|woff2|ttf)$/,
 				loader: 'file?name=../fonts/[name].[ext]'
+			},
+			{
+				test: /\.mp3$/,
+				loader: 'file?name=../sound/[name].[ext]'
 			}
 		],
 
