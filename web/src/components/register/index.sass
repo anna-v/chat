@@ -1,3 +1,5 @@
+@import '~components/vars';
+
 .register-form
 	position: absolute
 	top: 20%
@@ -22,7 +24,7 @@
 			width: 50%
 			padding: 5px 15px
 			color: #FFF
-			background: #FF494B
+			background: $pink-color
 
 	&__content
 		padding: 0 15px 20px
@@ -33,7 +35,7 @@
 	&__submit
 		padding: 5px 15px
 		color: #EEDFE2
-		background: #FF494B
+		background: $pink-color
 		font-size: 1.2rem
 		border: 0
 		border-radius: 3px
@@ -41,7 +43,7 @@
 		transition: background 0.2s
 
 		&:hover
-			background: darken(#FF494B, 10%)
+			background: darken($pink-color, 10%)
 
 	input
 		width: 100%

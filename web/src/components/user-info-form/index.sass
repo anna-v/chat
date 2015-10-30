@@ -1,3 +1,5 @@
+@import '~components/vars';
+
 .changeinfo-form__background--active
 	position: absolute
 	top: 0
@@ -15,7 +17,7 @@
 	height: 380px
 	transform: translate(-50%, -50%)
 	padding: 35px 20px 20px
-	border-top: 10px solid #ff4a4a
+	border-top: 10px solid $pink-color
 	overflow: auto
 	background: #ebebeb
 	transition: top 1s cubic-bezier(.45,-0.3,.53,1.3)
@@ -67,9 +69,6 @@
 			height: 17px
 			border: 2px solid #eee
 
-		&--avatar
-			background: red;
-
 	&__radio-input
 		position: absolute
 		z-index: -1
@@ -96,7 +95,7 @@
 		line-height: 24px
 
 		&:focus
-			box-shadow: inset 0 -2px 0 0 #FF494B
+			box-shadow: inset 0 -2px 0 0 $pink-color
 
 	&__submit
 		width: 90px
@@ -104,7 +103,7 @@
 		line-height: 30px
 		margin-top: 30px
 		color: #eee
-		background: #FF494B
+		background: $pink-color
 		font-size: 15px
 		border: 0
 		cursor: pointer
@@ -116,4 +115,4 @@
 		color: red
 
 input[type=radio]:checked + div
-	border: 2px solid #FF494B
+	border: 2px solid $pink-color

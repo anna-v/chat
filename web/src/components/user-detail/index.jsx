@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import './userdetail.sass';
+import './index.sass';
 
 class UserDetail extends Component {
 	static propTypes = {

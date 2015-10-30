@@ -3,7 +3,7 @@ import moment from 'moment';
 import {defaultChannelId} from '../../config';
 import {markdown} from '../../text-processor/process';
 import UserPic from '../user-pic';
-import './dialog-message.sass';
+import './index.sass';
 
 class DialogMessage extends Component {
 	static propTypes = {
@@ -67,7 +67,7 @@ class DialogMessage extends Component {
 
 		return (
 			<div className="dialog-message__inner-wrap">
-				{this.renderUserPic()}
+				<div className="dialog-message__userpic-wrap">{this.renderUserPic()}</div>
 				<div className="dialog-message__content">
 					<p className="dialog-message__sender">{this._getUsername()}</p>
 					<div

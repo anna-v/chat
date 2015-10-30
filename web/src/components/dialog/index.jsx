@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import DialogDetails from '../dialog-details';
 import DialogMessage from '../dialog-message';
-import './dialog.sass';
+import './index.sass';
 
 class Dialog extends Component {
 	static propTypes = {
