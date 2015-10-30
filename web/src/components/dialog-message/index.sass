@@ -1,3 +1,4 @@
+@import '~components/vars';
 @import '~components/mixins';
 
 .dialog-message
@@ -7,22 +8,22 @@
 	&--long
 		margin-top: 25px
 
-		@media screen and (max-width:#{$mobile})
+		@media screen and (max-width:#{$medium})
 			margin-top: 10px
 
 	&--short
 		margin-top: 10px
 		padding-left: 50px
 
-		@media screen and (max-width:#{$mobile})
+		@media screen and (max-width:#{$medium})
 			margin-top: 5px
 			padding-left: 0
 
 		& .dialog-message__content
 			width: 90%
 
-			@media screen and (max-width:#{$mobile})
-				width: 83%
+			@media screen and (max-width:#{$medium})
+				width: 80%
 
 	&__content
 		display: inline-block
@@ -30,21 +31,22 @@
 		width: calc(90% - 50px)
 		padding-left: 15px
 
-		@media screen and (max-width:#{$mobile})
-			width: 83%
+		@media screen and (max-width:#{$medium})
+			width: 80%
 
 	&__sender
 		font-size: 14px
 		font-weight: 700
 
-			@media screen and (max-width:#{$mobile})
-				font-size: 16px
+		&:after
+			display: inline-block
+			content: ":"
+			font-size: 14px
 
 	&__text
 		font-size: 13px
 
-		@media screen and (max-width:#{$mobile})
-			font-size: 15px
+		@media screen and (max-width:#{$medium})
 			padding-left: 10px
 
 	&__time
@@ -55,13 +57,13 @@
 		text-align: right
 		font-size: 10px
 
-		@media screen and (max-width:#{$mobile})
-			width: 17%
+		@media screen and (max-width:#{$medium})
+			width: 20%
 			font-size: 12px
 			padding-right: 15px
 
 	&__userpic-wrap
 		display: inline-block
 
-		@media screen and (max-width:#{$mobile})
+		@media screen and (max-width:#{$medium})
 			display: none

@@ -39,7 +39,6 @@ class UserInfoForm extends Component {
 	}
 
 	renderInput(name, value, id) {
-		// времени нет разбираться как правильно ((
 		let input = <input className="changeinfo-form__radio-input" type="radio" onChange={this.handleChange.bind(this)} name={name} value={value} id={id}/>;
 		let style;
 

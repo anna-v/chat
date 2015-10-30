@@ -63,7 +63,7 @@ class Sidebar extends Component {
 		const {channels, dispatch, user, ui} = this.props;
 		const formClickModificator = user.edit ? '--active' : '';
 		return (
-			<aside className="sidebar">
+			<aside className="sidebar" ref="menu">
 				<UserInfoForm modificator={formClickModificator} modifyInfoDisable={::this.modifyInfoDisable} dispatch={dispatch} user={user}/>
 				<UserInfo user={user} modifyInfo={::this.modifyInfo}/>
 				<UserDetail
