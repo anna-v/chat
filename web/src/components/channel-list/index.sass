@@ -1,10 +1,18 @@
+@import '~components/vars';
+
 .channels__add
 	height: calc(100vh - 400px)
 	overflow-y: scroll
 	position: relative
+
+	@media screen and (max-width:#{$medium})
+		height: calc(100vh - 340px)
 
 .channels__shadow
 	position: relative
 	z-index: 1
 	box-shadow: 0px -6px 6px -4px #ccc
 	height: 20px
+
+	@media screen and (max-width:#{$medium})
+		display: none

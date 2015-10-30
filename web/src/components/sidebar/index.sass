@@ -1,0 +1,21 @@
+@import '~components/vars';
+
+.sidebar
+	width: 33%
+	height: calc(100vh - 60px)
+	text-align: center
+	flex-shrink: 0
+
+	@media screen and (max-width:#{$medium})
+		position: absolute
+		display: block
+		background-color: #ebebeb
+		top: 60px
+		left: -100%
+		width: 100%
+		z-index: 6
+		transition: left 0.5s ease
+		overflow: hidden
+
+		&--show
+			left: 0

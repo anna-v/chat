@@ -12,7 +12,7 @@ import {changeChannel} from '../../actions/channels';
 import {setError, removeError} from '../../actions/ui';
 import {toggleEditable} from '../../actions/user';
 import UserInfoForm from '../user-info-form';
-import './sidebar.sass';
+import './index.sass';
 
 @connect(store => ({
 	channels: store.channels,
@@ -63,7 +63,7 @@ class Sidebar extends Component {
 		const {channels, dispatch, user, ui} = this.props;
 		const formClickModificator = user.edit ? '--active' : '';
 		return (
-			<aside className="sidebar">
+			<aside className="sidebar" ref="menu">
 				<UserInfoForm modificator={formClickModificator} modifyInfoDisable={::this.modifyInfoDisable} dispatch={dispatch} user={user}/>
 				<UserInfo user={user} modifyInfo={::this.modifyInfo}/>
 				<UserDetail

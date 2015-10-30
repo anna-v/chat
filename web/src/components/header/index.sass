@@ -1,7 +1,13 @@
+@import '~components/vars';
+
 .header
 	width: 100%
-	background: #ff494b
+	background: $pink-color
 	padding: 15px 50px
+
+	@media screen and (max-width:#{$medium})
+		height: 60px
+		padding: 15px 5%
 
 	&__logo
 		display: inline-block
@@ -20,3 +26,21 @@
 		line-height: 30px
 		font-weight: 300
 		text-decoration: none
+
+		@media screen and (max-width:#{$medium})
+			display: none
+
+	&__menu-link
+		display: none
+
+		@media screen and (max-width:#{$medium})
+			display: inline-block
+			vertical-align: middle
+			float: right
+			color: #eee
+			font-size: 26px
+
+	&__menu-text
+		font-size: 0
+
+	&__menu-icon

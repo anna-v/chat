@@ -2,7 +2,7 @@ import assign from 'object-assign';
 import userActionType from '../constants/user';
 
 const defaultUserData = {
-	avatar: 'http://lorempixel.com/80/80/'
+	avatar: ''
 };
 
 export function user(state = defaultUserData, action) {

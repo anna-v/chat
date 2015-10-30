@@ -1,3 +1,5 @@
+@import '~components/vars';
+
 .login-form
 	position: absolute
 	top: 20%
@@ -7,6 +9,9 @@
 	background: #FFF
 	border-radius: 5px
 	transform: translateX(-50%)
+
+	@media screen and (max-width:#{$small})
+		width: 100%
 
 	&__header
 		display: flex
@@ -21,7 +26,7 @@
 			width: 50%
 			padding: 5px 15px
 			color: #FFF
-			background: #FF494B
+			background: $pink-color
 
 	&__content
 		padding: 0 15px 20px
@@ -45,7 +50,7 @@
 		display: block
 		padding: 5px 15px
 		color: #EEDFE2
-		background: #FF494B
+		background: $pink-color
 		font-size: 1.2rem
 		border: 0
 		border-radius: 3px
@@ -53,7 +58,7 @@
 		transition: background 0.2s
 
 		&:hover
-			background: darken(#FF494B, 10%)
+			background: darken($pink-color, 10%)
 
 	input
 		width: 100%

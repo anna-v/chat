@@ -6,7 +6,7 @@ import {deactivateVideoPanel} from '../../actions/ui';
 import Dialog from '../dialog';
 import VideoPanel from '../video-panel';
 import Input from '../input';
-import './main.sass';
+import './index.sass';
 
 @connect(store => ({
 	messages: store.messages,
