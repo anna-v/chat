@@ -1,11 +1,6 @@
 ## Школа  Разработки Интерфейсов Yandex 2015
 
-### VanillaJS Team
+### Анна Васильева (VanillaJS Team)
 
-* address: http://vjs.cloudapp.net/
-
-* wiki: https://github.com/VanillaJs/chat/wiki
-
-* build: `./build/sh` -> http://localhost:3000/
+* address: http://anna-v-chat.herokuapp.com/
  
-
